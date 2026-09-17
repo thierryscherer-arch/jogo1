@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6156670169372162944}
   m_Layer: 0
   m_Name: Meteoro 1
-  m_TagString: Untagged
+  m_TagString: Meteoro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +177,7 @@ Animator:
   m_GameObject: {fileID: 758968244747510443}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aed173dab1f44e5429c8185b5a07ee42, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3719b01bacf481b44b5327654a48939c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

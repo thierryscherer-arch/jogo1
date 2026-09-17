@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class movimentofoguete : MonoBehaviour
 {
@@ -7,11 +7,13 @@ public class movimentofoguete : MonoBehaviour
 
     private Rigidbody2D rb;
     private Camera cam;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        anim = GetComponent<Animator>();
 
         rb.gravityScale = 0;
         rb.freezeRotation = true;
@@ -21,12 +23,11 @@ public class movimentofoguete : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        // Direção até o mouse
         Vector2 direcao = (Vector2)mousePos - rb.position;
 
-        // Movimento
-        if (Input.GetMouseButton(0))
+        bool botaoPressionado = Input.GetMouseButton(0);
+
+        if (botaoPressionado)
         {
             if (direcao.magnitude > 0.1f)
             {
@@ -34,18 +35,19 @@ public class movimentofoguete : MonoBehaviour
             }
         }
 
-        // Limita a velocidade
-        if (rb.linearVelocity.magnitude > velocidadeMaxima)
+        if (anim != null)
         {
-            rb.linearVelocity =
-                rb.linearVelocity.normalized * velocidadeMaxima;
+            anim.SetBool("estaLigado", botaoPressionado);
         }
 
-        // Faz a ponta do foguete apontar para o mouse
+        if (rb.linearVelocity.magnitude > velocidadeMaxima)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * velocidadeMaxima;
+        }
+
         if (direcao.magnitude > 0.1f)
         {
             float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
-
             transform.rotation = Quaternion.Euler(0, 0, angulo - 90f);
         }
     }
