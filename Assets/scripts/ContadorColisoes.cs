@@ -1,16 +1,17 @@
-using UnityEngine;
-using TMPro; // Importa o TextMeshPro
+﻿using UnityEngine;
+using TMPro;
 
 public class ContadorColisoes : MonoBehaviour
 {
-    public static ContadorColisoes instancia; 
+    public static ContadorColisoes instancia;
 
-    public TextMeshProUGUI textoContador; 
+    public TextMeshProUGUI textoContador;
     private int contagem = 0;
+    
+    public int ContagemAtual { get { return contagem; } }
 
     void Awake()
     {
-        
         if (instancia == null)
         {
             instancia = this;
@@ -34,6 +35,6 @@ public class ContadorColisoes : MonoBehaviour
 
     void AtualizarTexto()
     {
-        textoContador.text = "Colis�es: " + contagem;
+        textoContador.text = "Colisões: " + contagem;
     }
 }
